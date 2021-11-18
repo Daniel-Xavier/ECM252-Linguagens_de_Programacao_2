@@ -6,7 +6,7 @@ const Caixa = (props) => {
         <Card
             title="Caixa"
             subTitle="Total incluindo pedidos de cartão e de cashback">
-            <p className="text-center text-4xl">R${props.caixa}</p> 
+            <p className="text-center text-4xl">R$ {props.caixa}</p> 
         </Card>
     )
 }
@@ -25,7 +25,7 @@ const Caixa = (props) => {
 */
 const mapStateToProps = (state) => (
     {
-        //seu código aqui
+        caixa: state.pedidosCartao.reduce((acc,cur) => acc+cur.valor,0) - state.pedidosCashback.reduce((acc,cur) => acc +cur.valor,0)
     }
 )
 export default connect(mapStateToProps)(Caixa)

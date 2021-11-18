@@ -8,6 +8,14 @@ import { combineReducers } from 'redux'
 */
 const pedidosCartaoReducer = (pedidosCartao = [], acao) => {
     //seu código aqui
+    switch (acao.type) {
+        case ACOES.pedirCartao:
+            pedidosCartao.push(acao.payload)
+            return pedidosCartao
+        default:
+            return pedidosCartao
+        
+    }
 }
 
 
@@ -17,6 +25,15 @@ const pedidosCartaoReducer = (pedidosCartao = [], acao) => {
 */
 const pedidosCashbackReducer = (pedidosCashback = [], acao) => {
    //seu código aqui
+    switch (acao.type) {
+        case ACOES.pedirCashback:
+            pedidosCashback.push(acao.payload)
+            return pedidosCashback
+    
+        default:
+            return pedidosCashback
+        
+    }
 }
 
 /* 
@@ -24,4 +41,7 @@ const pedidosCashbackReducer = (pedidosCashback = [], acao) => {
     e devolver um único objeto que os contém.
     Os nomes das chaves não devem incluir o sufixo "reducer"
 */
-export default null
+export default combineReducers({
+    pedidosCartao: pedidosCartaoReducer,
+    pedidosCashback: pedidosCashbackReducer
+})

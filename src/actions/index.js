@@ -3,6 +3,16 @@ export const ACOES = {
     pedirCashback: "PEDIR_CASHBACK"
 }
 
+export const TIPO_CARTAO = {
+    gold: "gold",
+    platinum: "platinum"
+}
+
+export const VALOR_CARTAO = {
+    gold: 50,
+    platinum: 100
+}
+
 /*
     Essa função deve ser uma criadora de ação
     O type da ação construída deve ser obtido do objeto ACOES acima
@@ -15,9 +25,29 @@ export const ACOES = {
 */
 export const pedirCartao = (cpf, nome, cartaoEscolhido) => {
     //substitua "null" pela sua solução
+    let valor;
+    switch (cartaoEscolhido) {
+        case TIPO_CARTAO.gold:
+            valor = VALOR_CARTAO.gold
+            break;
+        
+        case TIPO_CARTAO.platinum:
+            valor = VALOR_CARTAO.platinum
+            break;
+
+        default:
+            break;
+    }
+
     return {
-        type: null,
-        payload: null
+        type: ACOES.pedirCartao,
+        payload: {
+            "cpf": cpf,
+            "nome": nome,
+            "tipoTransacao": ACOES.pedirCartao,
+            "data": Date.now(),
+            "valor": valor
+        }
     }
 }
 
@@ -32,8 +62,14 @@ export const pedirCartao = (cpf, nome, cartaoEscolhido) => {
 */
 export const pedirCashback = (cpf, valor) => {
     //substitua "null" pela sua solução
+    console.log(cpf, valor);
     return {
-        type: null,
-        payload: null
+        type: ACOES.pedirCashback,
+        payload: {
+            "cpf": cpf,
+            "valor": valor,
+            "tipoTransacao": ACOES.pedirCashback,
+            "data": Date.now()
+       }
     }
 }
