@@ -45,7 +45,7 @@ export const pedirCartao = (cpf, nome, cartaoEscolhido) => {
             "cpf": cpf,
             "nome": nome,
             "tipoTransacao": ACOES.pedirCartao,
-            "data": Date.now(),
+            "data": new Date().toLocaleString(),
             "valor": valor
         }
     }
@@ -62,14 +62,13 @@ export const pedirCartao = (cpf, nome, cartaoEscolhido) => {
 */
 export const pedirCashback = (cpf, valor) => {
     //substitua "null" pela sua solução
-    console.log(cpf, valor);
     return {
         type: ACOES.pedirCashback,
         payload: {
             "cpf": cpf,
-            "valor": valor,
+            "valor": Number(valor),
             "tipoTransacao": ACOES.pedirCashback,
-            "data": Date.now()
+            "data": new Date().toLocaleString()
        }
     }
 }

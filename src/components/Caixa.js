@@ -25,7 +25,11 @@ const Caixa = (props) => {
 */
 const mapStateToProps = (state) => (
     {
-        caixa: state.pedidosCartao.reduce((acc,cur) => acc+cur.valor,0) - state.pedidosCashback.reduce((acc,cur) => acc +cur.valor,0)
+        caixa:
+            state.pedidosCartao.reduce(
+                (acc, cur) => acc + cur.valor, 0)
+            - state.pedidosCashback.reduce(
+                (acc, cur) => acc + cur.valor, 0)
     }
 )
 export default connect(mapStateToProps)(Caixa)

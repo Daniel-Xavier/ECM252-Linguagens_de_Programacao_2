@@ -10,8 +10,7 @@ const pedidosCartaoReducer = (pedidosCartao = [], acao) => {
     //seu código aqui
     switch (acao.type) {
         case ACOES.pedirCartao:
-            pedidosCartao.push(acao.payload)
-            return pedidosCartao
+            return [...pedidosCartao, acao.payload]
         default:
             return pedidosCartao
         
@@ -27,8 +26,7 @@ const pedidosCashbackReducer = (pedidosCashback = [], acao) => {
    //seu código aqui
     switch (acao.type) {
         case ACOES.pedirCashback:
-            pedidosCashback.push(acao.payload)
-            return pedidosCashback
+            return [...pedidosCashback, acao.payload]
     
         default:
             return pedidosCashback
